@@ -1,10 +1,7 @@
 const express = require('express');
 
 const router = express();
-const { setUser/* , authUser, getUser */ } = require('../controllers');
-
-// router.post('/authUser', authUser);
-// router.get('/users/:id', getUser);
+const { setUser } = require('../controllers');
 
 router.route('/users').post(setUser, (err, req, res, next) => {
   if (err) {
