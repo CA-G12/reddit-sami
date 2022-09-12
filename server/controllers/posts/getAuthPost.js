@@ -1,13 +1,14 @@
 const { getAuthPostsQuery } = require('../../database/queries');
 
-const getAuthPosts = (req, res) => {
+const getAuthPosts = (req, res,next) => {
   const { userId } = req.body;
   getAuthPostsQuery(userId)
     .then((posts) => {
+
       res.json(posts.rows);
     })
     .catch((err) => {
-      res.status(500).json({ msg: 'server error' });
+      next(err)
     });
 };
 
